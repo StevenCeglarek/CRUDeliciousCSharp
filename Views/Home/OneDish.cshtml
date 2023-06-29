@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Dish
+<div>
+    <div class="row mx-auto p-5 text-center">
+        <h1>@Model.Name</h1>
+        <div class="d-flex gap-2 justify-content-center">
+            <a href="/dishes"><p>Home</p></a>
+            <p> | </p>
+            <a href="/dishes/createDish">Add a Dish</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            <h2>@Model.Name By @Model.Chef</h2>
+            <p>---------------------------------------</p>
+            <h3>@Model.Description</h3>
+            <h3>Calories: @Model.Calories</h3>
+            <h3>Tastiness: @Model.Tastiness</h3>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-4">
+            <form asp-action="DeleteDish" asp-controller="Home" asp-route-dishId="@Model.DishesId" method="post">
+                <input class="btn-primary text-light" type="submit" value="Delete">
+            </form>
+        </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button class="btn-secondary">
+                    <a class="text-light" href="/dishes/editDish/@Model.DishesId">Edit Dish</a>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
